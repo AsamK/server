@@ -5,16 +5,19 @@
 		<p v-html="descriptionDetail" />
 
 		<div class="preview-list">
-			<ItemPreview :key="highcontrast.id"
+			<ItemPreview
+				:key="highcontrast.id"
 				:preview="highcontrast"
 				:selected="selected.highcontrast"
 				@select="selectHighContrast" />
-			<ItemPreview v-for="preview in themes"
+			<ItemPreview
+				v-for="preview in themes"
 				:key="preview.id"
 				:preview="preview"
 				:selected="selected.theme"
 				@select="selectTheme" />
-			<ItemPreview v-for="preview in fonts"
+			<ItemPreview
+				v-for="preview in fonts"
 				:key="preview.id"
 				:preview="preview"
 				:selected="selected.font"

@@ -22,7 +22,8 @@
 
 <template>
 	<div>
-		<Multiselect :value="currentValue"
+		<Multiselect
+			:value="currentValue"
 			:loading="status.isLoading && groups.length === 0"
 			:options="groups"
 			:multiple="false"

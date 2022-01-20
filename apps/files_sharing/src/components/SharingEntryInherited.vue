@@ -35,12 +35,14 @@
 		<ActionText icon="icon-user">
 			{{ t('files_sharing', 'Added by {initiator}', { initiator: share.ownerDisplayName }) }}
 		</ActionText>
-		<ActionLink v-if="share.viaPath && share.viaFileid"
+		<ActionLink
+			v-if="share.viaPath && share.viaFileid"
 			icon="icon-folder"
 			:href="viaFileTargetUrl">
 			{{ t('files_sharing', 'Via “{folder}”', {folder: viaFolderName} ) }}
 		</ActionLink>
-		<ActionButton v-if="share.canDelete"
+		<ActionButton
+			v-if="share.canDelete"
 			icon="icon-close"
 			@click.prevent="onDelete">
 			{{ t('files_sharing', 'Unshare') }}

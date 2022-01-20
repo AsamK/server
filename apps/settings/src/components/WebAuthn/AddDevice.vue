@@ -30,16 +30,19 @@
 			</button>
 		</div>
 
-		<div v-else-if="step === RegistrationSteps.REGISTRATION"
+		<div
+			v-else-if="step === RegistrationSteps.REGISTRATION"
 			class="new-webauthn-device">
 			<span class="icon-loading-small webauthn-loading" />
 			{{ t('settings', 'Please authorize your WebAuthn device.') }}
 		</div>
 
-		<div v-else-if="step === RegistrationSteps.NAMING"
+		<div
+			v-else-if="step === RegistrationSteps.NAMING"
 			class="new-webauthn-device">
 			<span class="icon-loading-small webauthn-loading" />
-			<input v-model="name"
+			<input
+				v-model="name"
 				type="text"
 				:placeholder="t('settings', 'Name your device')"
 				@:keyup.enter="submit">
@@ -48,7 +51,8 @@
 			</button>
 		</div>
 
-		<div v-else-if="step === RegistrationSteps.PERSIST"
+		<div
+			v-else-if="step === RegistrationSteps.PERSIST"
 			class="new-webauthn-device">
 			<span class="icon-loading-small webauthn-loading" />
 			{{ t('settings', 'Adding your device …') }}

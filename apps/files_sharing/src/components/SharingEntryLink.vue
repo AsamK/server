@@ -22,7 +22,8 @@
 
 <template>
 	<li :class="{'sharing-entry--share': share}" class="sharing-entry sharing-entry__link">
-		<Avatar :is-no-user="true"
+		<Avatar
+			:is-no-user="true"
 			:icon-class="isEmailShareType ? 'avatar-link-share icon-mail-white' : 'avatar-link-share icon-public-white'"
 			class="sharing-entry__avatar" />
 		<div class="sharing-entry__desc">
@@ -35,10 +36,12 @@
 		</div>
 
 		<!-- clipboard -->
-		<Actions v-if="share && !isEmailShareType && share.token"
+		<Actions
+			v-if="share && !isEmailShareType && share.token"
 			ref="copyButton"
 			class="sharing-entry__copy">
-			<ActionLink :href="shareLink"
+			<ActionLink
+				:href="shareLink"
 				target="_blank"
 				:icon="copied && copySuccess ? 'icon-checkmark-color' : 'icon-clippy'"
 				@click.stop.prevent="copyLink">
@@ -47,13 +50,15 @@
 		</Actions>
 
 		<!-- pending actions -->
-		<Actions v-if="!pending && (pendingPassword || pendingExpirationDate)"
+		<Actions
+			v-if="!pending && (pendingPassword || pendingExpirationDate)"
 			class="sharing-entry__actions"
 			menu-align="right"
 			:open.sync="open"
 			@close="onNewLinkShare">
 			<!-- pending data menu -->
-			<ActionText v-if="errors.pending"
+			<ActionText
+				v-if="errors.pending"
 				icon="icon-error"
 				:class="{ error: errors.pending}">
 				{{ errors.pending }}
@@ -66,14 +71,16 @@
 			<ActionText v-if="pendingPassword" icon="icon-password">
 				{{ t('files_sharing', 'Password protection (enforced)') }}
 			</ActionText>
-			<ActionCheckbox v-else-if="config.enableLinkPasswordByDefault"
+			<ActionCheckbox
+				v-else-if="config.enableLinkPasswordByDefault"
 				:checked.sync="isPasswordProtected"
 				:disabled="config.enforcePasswordForPublicLink || saving"
 				class="share-link-password-checkbox"
 				@uncheck="onPasswordDisable">
 				{{ t('files_sharing', 'Password protection') }}
 			</ActionCheckbox>
-			<ActionInput v-if="pendingPassword || share.password"
+			<ActionInput
+				v-if="pendingPassword || share.password"
 				v-tooltip.auto="{
 					content: errors.password,
 					show: errors.password,
@@ -95,7 +102,8 @@
 			<ActionText v-if="pendingExpirationDate" icon="icon-calendar-dark">
 				{{ t('files_sharing', 'Expiration date (enforced)') }}
 			</ActionText>
-			<ActionInput v-if="pendingExpirationDate"
+			<ActionInput
+				v-if="pendingExpirationDate"
 				v-model="share.expireDate"
 				v-tooltip.auto="{
 					content: errors.expireDate,
@@ -125,7 +133,8 @@
 		</Actions>
 
 		<!-- actions -->
-		<Actions v-else-if="!loading"
+		<Actions
+			v-else-if="!loading"
 			class="sharing-entry__actions"
 			menu-align="right"
 			:open.sync="open"
@@ -153,21 +162,24 @@
 					</ActionInput>
 					<!-- folder -->
 					<template v-if="isFolder && fileHasCreatePermission && config.isPublicUploadEnabled">
-						<ActionRadio :checked="sharePermissions === publicUploadRValue"
+						<ActionRadio
+							:checked="sharePermissions === publicUploadRValue"
 							:value="publicUploadRValue"
 							:name="randomId"
 							:disabled="saving"
 							@change="togglePermissions">
 							{{ t('files_sharing', 'Read only') }}
 						</ActionRadio>
-						<ActionRadio :checked="sharePermissions === publicUploadRWValue"
+						<ActionRadio
+							:checked="sharePermissions === publicUploadRWValue"
 							:value="publicUploadRWValue"
 							:disabled="saving"
 							:name="randomId"
 							@change="togglePermissions">
 							{{ t('files_sharing', 'Allow upload and editing') }}
 						</ActionRadio>
-						<ActionRadio :checked="sharePermissions === publicUploadWValue"
+						<ActionRadio
+							:checked="sharePermissions === publicUploadWValue"
 							:value="publicUploadWValue"
 							:disabled="saving"
 							:name="randomId"
@@ -178,7 +190,8 @@
 					</template>
 
 					<!-- file -->
-					<ActionCheckbox v-if="!isFolder"
+					<ActionCheckbox
+						v-if="!isFolder"
 						:checked.sync="canUpdate"
 						:disabled="saving"
 						@change="queueUpdate('permissions')">
@@ -193,7 +206,8 @@
 					</ActionCheckbox>
 
 					<!-- password -->
-					<ActionCheckbox :checked.sync="isPasswordProtected"
+					<ActionCheckbox
+						:checked.sync="isPasswordProtected"
 						:disabled="config.enforcePasswordForPublicLink || saving"
 						class="share-link-password-checkbox"
 						@uncheck="onPasswordDisable">
@@ -201,7 +215,8 @@
 							? t('files_sharing', 'Password protection (enforced)')
 							: t('files_sharing', 'Password protect') }}
 					</ActionCheckbox>
-					<ActionInput v-if="isPasswordProtected"
+					<ActionInput
+						v-if="isPasswordProtected"
 						ref="password"
 						v-tooltip.auto="{
 							content: errors.password,
@@ -223,7 +238,8 @@
 					</ActionInput>
 
 					<!-- password protected by Talk -->
-					<ActionCheckbox v-if="isPasswordProtectedByTalkAvailable"
+					<ActionCheckbox
+						v-if="isPasswordProtectedByTalkAvailable"
 						:checked.sync="isPasswordProtectedByTalk"
 						:disabled="!canTogglePasswordProtectedByTalkAvailable || saving"
 						class="share-link-password-talk-checkbox"
@@ -232,7 +248,8 @@
 					</ActionCheckbox>
 
 					<!-- expiration date -->
-					<ActionCheckbox :checked.sync="hasExpirationDate"
+					<ActionCheckbox
+						:checked.sync="hasExpirationDate"
 						:disabled="config.isDefaultExpireDateEnforced || saving"
 						class="share-link-expire-date-checkbox"
 						@uncheck="onExpirationDisable">
@@ -240,7 +257,8 @@
 							? t('files_sharing', 'Expiration date (enforced)')
 							: t('files_sharing', 'Set expiration date') }}
 					</ActionCheckbox>
-					<ActionInput v-if="hasExpirationDate"
+					<ActionInput
+						v-if="hasExpirationDate"
 						ref="expireDate"
 						v-tooltip.auto="{
 							content: errors.expireDate,
@@ -262,12 +280,14 @@
 					</ActionInput>
 
 					<!-- note -->
-					<ActionCheckbox :checked.sync="hasNote"
+					<ActionCheckbox
+						:checked.sync="hasNote"
 						:disabled="saving"
 						@uncheck="queueUpdate('note')">
 						{{ t('files_sharing', 'Note to recipient') }}
 					</ActionCheckbox>
-					<ActionTextEditable v-if="hasNote"
+					<ActionTextEditable
+						v-if="hasNote"
 						ref="note"
 						v-tooltip.auto="{
 							content: errors.note,
@@ -285,7 +305,8 @@
 				</template>
 
 				<!-- external actions -->
-				<ExternalShareAction v-for="action in externalLinkActions"
+				<ExternalShareAction
+					v-for="action in externalLinkActions"
 					:id="action.id"
 					:key="action.id"
 					:action="action"
@@ -293,7 +314,8 @@
 					:share="share" />
 
 				<!-- external legacy sharing via url (social...) -->
-				<ActionLink v-for="({icon, url, name}, index) in externalLegacyLinkActions"
+				<ActionLink
+					v-for="({icon, url, name}, index) in externalLegacyLinkActions"
 					:key="index"
 					:href="url(shareLink)"
 					:icon="icon"
@@ -301,13 +323,15 @@
 					{{ name }}
 				</ActionLink>
 
-				<ActionButton v-if="share.canDelete"
+				<ActionButton
+					v-if="share.canDelete"
 					icon="icon-close"
 					:disabled="saving"
 					@click.prevent="onDelete">
 					{{ t('files_sharing', 'Unshare') }}
 				</ActionButton>
-				<ActionButton v-if="!isEmailShareType && canReshare"
+				<ActionButton
+					v-if="!isEmailShareType && canReshare"
 					class="new-share-link"
 					icon="icon-add"
 					@click.prevent.stop="onNewLinkShare">
@@ -316,7 +340,8 @@
 			</template>
 
 			<!-- Create new share -->
-			<ActionButton v-else-if="canReshare"
+			<ActionButton
+				v-else-if="canReshare"
 				class="new-share-link"
 				:icon="loading ? 'icon-loading-small' : 'icon-add'"
 				@click.prevent.stop="onNewLinkShare">

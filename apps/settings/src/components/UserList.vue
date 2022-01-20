@@ -23,12 +23,14 @@
 <template>
 	<div id="app-content" class="user-list-grid" @scroll.passive="onScroll">
 		<Modal v-if="showConfig.showNewUserForm" @close="closeModal">
-			<form id="new-user"
+			<form
+				id="new-user"
 				:disabled="loading.all"
 				class="modal__content"
 				@submit.prevent="createUser">
 				<h2>{{ t('settings','New user') }}</h2>
-				<input id="newusername"
+				<input
+					id="newusername"
 					ref="newusername"
 					v-model="newUser.id"
 					:disabled="settings.newUserGenerateUserID"
@@ -43,7 +45,8 @@
 					pattern="[a-zA-Z0-9 _\.@\-']+"
 					required
 					type="text">
-				<input id="newdisplayname"
+				<input
+					id="newdisplayname"
 					v-model="newUser.displayName"
 					:placeholder="t('settings', 'Display name')"
 					autocapitalize="none"
@@ -52,7 +55,8 @@
 					class="modal__item"
 					name="displayname"
 					type="text">
-				<input id="newuserpassword"
+				<input
+					id="newuserpassword"
 					ref="newuserpassword"
 					v-model="newUser.password"
 					:minlength="minPasswordLength"
@@ -64,7 +68,8 @@
 					class="modal__item"
 					name="password"
 					type="password">
-				<input id="newemail"
+				<input
+					id="newemail"
 					v-model="newUser.mailAddress"
 					:placeholder="t('settings', 'Email')"
 					:required="newUser.password==='' || settings.newUserRequireEmail"
@@ -76,14 +81,16 @@
 					type="email">
 				<div class="groups modal__item">
 					<!-- hidden input trick for vanilla html5 form validation -->
-					<input v-if="!settings.isAdmin"
+					<input
+						v-if="!settings.isAdmin"
 						id="newgroups"
 						:class="{'icon-loading-small': loading.groups}"
 						:required="!settings.isAdmin"
 						:value="newUser.groups"
 						tabindex="-1"
 						type="text">
-					<Multiselect v-model="newUser.groups"
+					<Multiselect
+						v-model="newUser.groups"
 						:close-on-select="false"
 						:disabled="loading.groups||loading.all"
 						:multiple="true"
@@ -102,9 +109,11 @@
 						<span slot="noResult">{{ t('settings', 'No results') }}</span>
 					</Multiselect>
 				</div>
-				<div v-if="subAdminsGroups.length>0 && settings.isAdmin"
+				<div
+					v-if="subAdminsGroups.length>0 && settings.isAdmin"
 					class="subadmins modal__item">
-					<Multiselect v-model="newUser.subAdminsGroups"
+					<Multiselect
+						v-model="newUser.subAdminsGroups"
 						:close-on-select="false"
 						:multiple="true"
 						:options="subAdminsGroups"
@@ -117,7 +126,8 @@
 					</Multiselect>
 				</div>
 				<div class="quota modal__item">
-					<Multiselect v-model="newUser.quota"
+					<Multiselect
+						v-model="newUser.quota"
 						:allow-empty="false"
 						:options="quotaOptions"
 						:placeholder="t('settings', 'Select user quota')"
@@ -128,7 +138,8 @@
 						@tag="validateQuota" />
 				</div>
 				<div v-if="showConfig.showLanguages" class="languages modal__item">
-					<Multiselect v-model="newUser.language"
+					<Multiselect
+						v-model="newUser.language"
 						:allow-empty="false"
 						:options="languages"
 						:placeholder="t('settings', 'Default language')"
@@ -142,7 +153,8 @@
 				<div v-if="showConfig.showUserBackend" class="userBackend" />
 				<div v-if="showConfig.showLastLogin" class="lastLogin" />
 				<div class="user-actions">
-					<button id="newsubmit"
+					<button
+						id="newsubmit"
 						class="button primary"
 						type="submit"
 						value="">
@@ -151,7 +163,8 @@
 				</div>
 			</form>
 		</Modal>
-		<div id="grid-header"
+		<div
+			id="grid-header"
 			:class="{'sticky': scrolled && !showConfig.showNewUserForm}"
 			class="row">
 			<div id="headerAvatar" class="avatar" />
@@ -171,7 +184,8 @@
 			<div id="headerGroups" class="groups">
 				{{ t('settings', 'Groups') }}
 			</div>
-			<div v-if="subAdminsGroups.length>0 && settings.isAdmin"
+			<div
+				v-if="subAdminsGroups.length>0 && settings.isAdmin"
 				id="headerSubAdmins"
 				class="subadmins">
 				{{ t('settings', 'Group admin for') }}
@@ -179,23 +193,27 @@
 			<div id="headerQuota" class="quota">
 				{{ t('settings', 'Quota') }}
 			</div>
-			<div v-if="showConfig.showLanguages"
+			<div
+				v-if="showConfig.showLanguages"
 				id="headerLanguages"
 				class="languages">
 				{{ t('settings', 'Language') }}
 			</div>
 
-			<div v-if="showConfig.showUserBackend || showConfig.showStoragePath"
+			<div
+				v-if="showConfig.showUserBackend || showConfig.showStoragePath"
 				class="headerUserBackend userBackend">
 				<div v-if="showConfig.showUserBackend" class="userBackend">
 					{{ t('settings', 'User backend') }}
 				</div>
-				<div v-if="showConfig.showStoragePath"
+				<div
+					v-if="showConfig.showStoragePath"
 					class="subtitle storageLocation">
 					{{ t('settings', 'Storage location') }}
 				</div>
 			</div>
-			<div v-if="showConfig.showLastLogin"
+			<div
+				v-if="showConfig.showLastLogin"
 				class="headerLastLogin lastLogin">
 				{{ t('settings', 'Last login') }}
 			</div>
@@ -203,7 +221,8 @@
 			<div class="userActions" />
 		</div>
 
-		<user-row v-for="user in filteredUsers"
+		<user-row
+			v-for="user in filteredUsers"
 			:key="user.id"
 			:external-actions="externalActions"
 			:groups="groups"

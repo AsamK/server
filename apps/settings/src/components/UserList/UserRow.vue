@@ -25,9 +25,11 @@
 <template>
 	<!-- Obfuscated user: Logged in user does not have permissions to see all of the data -->
 	<div v-if="Object.keys(user).length ===1" :data-id="user.id" class="row">
-		<div :class="{'icon-loading-small': loading.delete || loading.disable || loading.wipe}"
+		<div
+			:class="{'icon-loading-small': loading.delete || loading.disable || loading.wipe}"
 			class="avatar">
-			<img v-if="!loading.delete && !loading.disable && !loading.wipe"
+			<img
+				v-if="!loading.delete && !loading.disable && !loading.wipe"
 				:src="generateAvatar(user.id, 32)"
 				:srcset="generateAvatar(user.id, 64)+' 2x, '+generateAvatar(user.id, 128)+' 4x'"
 				alt=""
@@ -57,16 +59,19 @@
 		:user-actions="userActions"
 		:user="user"
 		:class="{'row--menu-opened': openedMenu}" />
-	<div v-else
+	<div
+		v-else
 		:class="{
 			'disabled': loading.delete || loading.disable,
 			'row--menu-opened': openedMenu
 		}"
 		:data-id="user.id"
 		class="row row--editable">
-		<div :class="{'icon-loading-small': loading.delete || loading.disable || loading.wipe}"
+		<div
+			:class="{'icon-loading-small': loading.delete || loading.disable || loading.wipe}"
 			class="avatar">
-			<img v-if="!loading.delete && !loading.disable && !loading.wipe"
+			<img
+				v-if="!loading.delete && !loading.disable && !loading.wipe"
 				:src="generateAvatar(user.id, 32)"
 				:srcset="generateAvatar(user.id, 64)+' 2x, '+generateAvatar(user.id, 128)+' 4x'"
 				alt=""
@@ -103,11 +108,13 @@
 				</div>
 			</div>
 		</div>
-		<form v-if="settings.canChangePassword && user.backendCapabilities.setPassword"
+		<form
+			v-if="settings.canChangePassword && user.backendCapabilities.setPassword"
 			:class="{'icon-loading-small': loading.password}"
 			class="password"
 			@submit.prevent="updatePassword">
-			<input :id="'password'+user.id+rand"
+			<input
+				:id="'password'+user.id+rand"
 				ref="password"
 				:disabled="loading.password || loading.all"
 				:minlength="minPasswordLength"
@@ -122,10 +129,12 @@
 			<input class="icon-confirm" type="submit" value="">
 		</form>
 		<div v-else />
-		<form :class="{'icon-loading-small': loading.mailAddress}"
+		<form
+			:class="{'icon-loading-small': loading.mailAddress}"
 			class="mailAddress"
 			@submit.prevent="updateEmail">
-			<input :id="'mailAddress'+user.id+rand"
+			<input
+				:id="'mailAddress'+user.id+rand"
 				ref="mailAddress"
 				:disabled="loading.mailAddress||loading.all"
 				:placeholder="t('settings', 'Add new email address')"
@@ -138,7 +147,8 @@
 			<input class="icon-confirm" type="submit" value="">
 		</form>
 		<div :class="{'icon-loading-small': loading.groups}" class="groups">
-			<Multiselect :close-on-select="false"
+			<Multiselect
+				:close-on-select="false"
 				:disabled="loading.groups||loading.all"
 				:limit="2"
 				:multiple="true"
@@ -157,10 +167,12 @@
 				<span slot="noResult">{{ t('settings', 'No results') }}</span>
 			</Multiselect>
 		</div>
-		<div v-if="subAdminsGroups.length>0 && settings.isAdmin"
+		<div
+			v-if="subAdminsGroups.length>0 && settings.isAdmin"
 			:class="{'icon-loading-small': loading.subadmins}"
 			class="subadmins">
-			<Multiselect :close-on-select="false"
+			<Multiselect
+				:close-on-select="false"
 				:disabled="loading.subadmins||loading.all"
 				:limit="2"
 				:multiple="true"
@@ -176,10 +188,12 @@
 				<span slot="noResult">{{ t('settings', 'No results') }}</span>
 			</Multiselect>
 		</div>
-		<div v-tooltip.auto="usedSpace"
+		<div
+			v-tooltip.auto="usedSpace"
 			:class="{'icon-loading-small': loading.quota}"
 			class="quota">
-			<Multiselect :allow-empty="false"
+			<Multiselect
+				:allow-empty="false"
 				:disabled="loading.quota||loading.all"
 				:options="quotaOptions"
 				:placeholder="t('settings', 'Select user quota')"
@@ -192,10 +206,12 @@
 				@input="setUserQuota"
 				@tag="validateQuota" />
 		</div>
-		<div v-if="showConfig.showLanguages"
+		<div
+			v-if="showConfig.showLanguages"
 			:class="{'icon-loading-small': loading.languages}"
 			class="languages">
-			<Multiselect :allow-empty="false"
+			<Multiselect
+				:allow-empty="false"
 				:disabled="loading.languages||loading.all"
 				:options="languages"
 				:placeholder="t('settings', 'No language set')"
@@ -209,28 +225,33 @@
 		</div>
 
 		<!-- don't show this on edit mode -->
-		<div v-if="showConfig.showStoragePath || showConfig.showUserBackend"
+		<div
+			v-if="showConfig.showStoragePath || showConfig.showUserBackend"
 			class="storageLocation" />
 		<div v-if="showConfig.showLastLogin" />
 
 		<div class="userActions">
-			<div v-if="!loading.all"
+			<div
+				v-if="!loading.all"
 				class="toggleUserActions">
 				<Actions>
-					<ActionButton icon="icon-checkmark"
+					<ActionButton
+						icon="icon-checkmark"
 						@click="editing = false">
 						{{ t('settings', 'Done') }}
 					</ActionButton>
 				</Actions>
 				<div v-click-outside="hideMenu" class="userPopoverMenuWrapper">
-					<div class="icon-more"
+					<div
+						class="icon-more"
 						@click="toggleMenu" />
 					<div :class="{ 'open': openedMenu }" class="popovermenu">
 						<PopoverMenu :menu="userActions" />
 					</div>
 				</div>
 			</div>
-			<div :style="{opacity: feedbackMessage !== '' ? 1 : 0}"
+			<div
+				:style="{opacity: feedbackMessage !== '' ? 1 : 0}"
 				class="feedback">
 				<div class="icon-checkmark" />
 				{{ feedbackMessage }}

@@ -8,7 +8,8 @@
 			<div class="avatar-external icon-external-white" />
 		</template>
 
-		<ActionLink ref="copyButton"
+		<ActionLink
+			ref="copyButton"
 			:href="internalLink"
 			target="_blank"
 			:icon="copied && copySuccess ? 'icon-checkmark-color' : 'icon-clippy'"

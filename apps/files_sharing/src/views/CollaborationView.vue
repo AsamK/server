@@ -21,7 +21,8 @@
   -->
 
 <template>
-	<CollectionList v-if="fileId"
+	<CollectionList
+		v-if="fileId"
 		:id="fileId"
 		type="file"
 		:name="filename" />

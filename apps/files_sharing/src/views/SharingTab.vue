@@ -42,7 +42,8 @@
 			</SharingEntrySimple>
 
 			<!-- add new share input -->
-			<SharingInput v-if="!loading"
+			<SharingInput
+				v-if="!loading"
 				:can-reshare="canReshare"
 				:file-info="fileInfo"
 				:link-shares="linkShares"
@@ -51,14 +52,16 @@
 				@add:share="addShare" />
 
 			<!-- link shares list -->
-			<SharingLinkList v-if="!loading"
+			<SharingLinkList
+				v-if="!loading"
 				ref="linkShareList"
 				:can-reshare="canReshare"
 				:file-info="fileInfo"
 				:shares="linkShares" />
 
 			<!-- other shares list -->
-			<SharingList v-if="!loading"
+			<SharingList
+				v-if="!loading"
 				ref="shareList"
 				:shares="shares"
 				:file-info="fileInfo" />
@@ -70,13 +73,15 @@
 			<SharingEntryInternal :file-info="fileInfo" />
 
 			<!-- projects -->
-			<CollectionList v-if="fileInfo"
+			<CollectionList
+				v-if="fileInfo"
 				:id="`${fileInfo.id}`"
 				type="file"
 				:name="fileInfo.name" />
 
 			<!-- additionnal entries, use it with cautious -->
-			<div v-for="(section, index) in sections"
+			<div
+				v-for="(section, index) in sections"
 				:ref="'section-' + index"
 				:key="index"
 				class="sharingTab__additionalContent">

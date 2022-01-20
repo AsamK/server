@@ -4,7 +4,8 @@
 		<div class="preview-description">
 			<h3>{{ preview.title }}</h3>
 			<p>{{ preview.text }}</p>
-			<input :id="'accessibility-' + preview.id"
+			<input
+				:id="'accessibility-' + preview.id"
 				v-model="checked"
 				type="checkbox"
 				class="checkbox">

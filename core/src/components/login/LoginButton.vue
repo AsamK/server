@@ -21,12 +21,14 @@
 
 <template>
 	<div id="submit-wrapper" @click="$emit('click')">
-		<input id="submit-form"
+		<input
+			id="submit-form"
 			type="submit"
 			class="login primary"
 			title=""
 			:value="!loading ? t('core', 'Log in') : t('core', 'Logging in …')">
-		<div class="submit-icon"
+		<div
+			class="submit-icon"
 			:class="{
 				'icon-confirm-white': !loading,
 				'icon-loading-small': loading && invertedColors,

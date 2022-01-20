@@ -22,7 +22,8 @@
 <template>
 	<div v-if="!hideLoginForm || directLogin">
 		<transition name="fade" mode="out-in">
-			<div v-if="!passwordlessLogin && !resetPassword && resetPasswordTarget === ''"
+			<div
+				v-if="!passwordlessLogin && !resetPassword && resetPasswordTarget === ''"
 				key="login">
 				<LoginForm
 					:username.sync="user"
@@ -34,12 +35,14 @@
 					:inverted-colors="invertedColors"
 					:auto-complete-allowed="autoCompleteAllowed"
 					@submit="loading = true" />
-				<a v-if="canResetPassword && resetPasswordLink !== ''"
+				<a
+					v-if="canResetPassword && resetPasswordLink !== ''"
 					id="lost-password"
 					:href="resetPasswordLink">
 					{{ t('core', 'Forgot password?') }}
 				</a>
-				<a v-else-if="canResetPassword && !resetPassword"
+				<a
+					v-else-if="canResetPassword && !resetPassword"
 					id="lost-password"
 					:href="resetPasswordLink"
 					@click.prevent="resetPassword = true">
@@ -47,9 +50,11 @@
 				</a>
 				<br>
 				<template v-if="hasPasswordless">
-					<div v-if="countAlternativeLogins"
+					<div
+						v-if="countAlternativeLogins"
 						class="alternative-logins">
-						<a v-if="hasPasswordless"
+						<a
+							v-if="hasPasswordless"
 							class="button"
 							:class="{ 'single-alt-login-option': countAlternativeLogins }"
 							href="#"
@@ -57,14 +62,16 @@
 							{{ t('core', 'Log in with a device') }}
 						</a>
 					</div>
-					<a v-else
+					<a
+						v-else
 						href="#"
 						@click.prevent="passwordlessLogin = true">
 						{{ t('core', 'Log in with a device') }}
 					</a>
 				</template>
 			</div>
-			<div v-else-if="!loading && passwordlessLogin"
+			<div
+				v-else-if="!loading && passwordlessLogin"
 				key="reset"
 				class="login-additional">
 				<PasswordLessLoginForm
@@ -80,11 +87,13 @@
 					{{ t('core', 'Back') }}
 				</a>
 			</div>
-			<div v-else-if="!loading && canResetPassword"
+			<div
+				v-else-if="!loading && canResetPassword"
 				key="reset"
 				class="login-additional">
 				<div class="lost-password-container">
-					<ResetPassword v-if="resetPassword"
+					<ResetPassword
+						v-if="resetPassword"
 						:username.sync="user"
 						:reset-password-link="resetPasswordLink"
 						:inverted-colors="invertedColors"
@@ -92,7 +101,8 @@
 				</div>
 			</div>
 			<div v-else-if="resetPasswordTarget !== ''">
-				<UpdatePassword :username.sync="user"
+				<UpdatePassword
+					:username.sync="user"
 					:reset-password-target="resetPasswordTarget"
 					:inverted-colors="invertedColors"
 					@done="passwordResetFinished" />

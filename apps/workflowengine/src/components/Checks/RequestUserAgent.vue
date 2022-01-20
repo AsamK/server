@@ -45,7 +45,8 @@
 				<span v-else class="option__title" v-html="props.option.label" />
 			</template>
 		</Multiselect>
-		<input v-if="!isPredefined"
+		<input
+			v-if="!isPredefined"
 			type="text"
 			:value="currentValue.pattern"
 			@input="updateCustom">

@@ -42,11 +42,13 @@
 				</template>
 
 				<div>
-					<a v-if="updaterEnabled && webUpdaterEnabled"
+					<a
+						v-if="updaterEnabled && webUpdaterEnabled"
 						href="#"
 						class="button primary"
 						@click="clickUpdaterButton">{{ t('updatenotification', 'Open updater') }}</a>
-					<a v-if="downloadLink"
+					<a
+						v-if="downloadLink"
 						:href="downloadLink"
 						class="button"
 						:class="{ hidden: !updaterEnabled }">{{ t('updatenotification', 'Download now') }}</a>
@@ -98,7 +100,8 @@
 
 		<p id="oca_updatenotification_groups">
 			{{ t('updatenotification', 'Notify members of the following groups about available updates:') }}
-			<Multiselect v-model="notifyGroups"
+			<Multiselect
+				v-model="notifyGroups"
 				:options="availableGroups"
 				:multiple="true"
 				label="label"

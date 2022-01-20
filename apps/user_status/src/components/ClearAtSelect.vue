@@ -21,8 +21,7 @@
 
 <template>
 	<div class="clear-at-select">
-		<span
-			class="clear-at-select__label">
+		<span class="clear-at-select__label">
 			{{ $t('user_status', 'Clear status message after') }}
 		</span>
 		<Multiselect

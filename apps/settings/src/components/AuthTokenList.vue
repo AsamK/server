@@ -30,7 +30,8 @@
 			</tr>
 		</thead>
 		<tbody class="token-list">
-			<AuthToken v-for="token in sortedTokens"
+			<AuthToken
+				v-for="token in sortedTokens"
 				:key="token.id"
 				:token="token"
 				@toggleScope="toggleScope"

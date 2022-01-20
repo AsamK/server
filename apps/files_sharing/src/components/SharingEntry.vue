@@ -22,14 +22,16 @@
 
 <template>
 	<li class="sharing-entry">
-		<Avatar class="sharing-entry__avatar"
+		<Avatar
+			class="sharing-entry__avatar"
 			:is-no-user="share.type !== SHARE_TYPES.SHARE_TYPE_USER"
 			:user="share.shareWith"
 			:display-name="share.shareWithDisplayName"
 			:tooltip-message="share.type === SHARE_TYPES.SHARE_TYPE_USER ? share.shareWith : ''"
 			:menu-position="'left'"
 			:url="share.shareWithAvatar" />
-		<component :is="share.shareWithLink ? 'a' : 'div'"
+		<component
+			:is="share.shareWithLink ? 'a' : 'div'"
 			v-tooltip.auto="tooltip"
 			:href="share.shareWithLink"
 			class="sharing-entry__desc">
@@ -84,14 +86,16 @@
 				</ActionCheckbox>
 
 				<!-- expiration date -->
-				<ActionCheckbox :checked.sync="hasExpirationDate"
+				<ActionCheckbox
+					:checked.sync="hasExpirationDate"
 					:disabled="config.isDefaultInternalExpireDateEnforced || saving"
 					@uncheck="onExpirationDisable">
 					{{ config.isDefaultInternalExpireDateEnforced
 						? t('files_sharing', 'Expiration date enforced')
 						: t('files_sharing', 'Set expiration date') }}
 				</ActionCheckbox>
-				<ActionInput v-if="hasExpirationDate"
+				<ActionInput
+					v-if="hasExpirationDate"
 					ref="expireDate"
 					v-tooltip.auto="{
 						content: errors.expireDate,
@@ -118,7 +122,8 @@
 						@uncheck="queueUpdate('note')">
 						{{ t('files_sharing', 'Note to recipient') }}
 					</ActionCheckbox>
-					<ActionTextEditable v-if="hasNote"
+					<ActionTextEditable
+						v-if="hasNote"
 						ref="note"
 						v-tooltip.auto="{
 							content: errors.note,
@@ -134,7 +139,8 @@
 				</template>
 			</template>
 
-			<ActionButton v-if="share.canDelete"
+			<ActionButton
+				v-if="share.canDelete"
 				icon="icon-close"
 				:disabled="saving"
 				@click.prevent="onDelete">

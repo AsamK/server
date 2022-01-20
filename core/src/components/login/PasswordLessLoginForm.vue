@@ -1,5 +1,6 @@
 <template>
-	<form v-if="(isHttps || isLocalhost) && hasPublicKeyCredential"
+	<form
+		v-if="(isHttps || isLocalhost) && hasPublicKeyCredential"
 		ref="loginForm"
 		method="post"
 		name="login"
@@ -7,7 +8,8 @@
 		<fieldset>
 			<p class="grouptop groupbottom">
 				<label for="user" class="infield">{{ t('core', 'Username or	email') }}</label>
-				<input id="user"
+				<input
+					id="user"
 					ref="user"
 					v-model="user"
 					type="text"
@@ -23,7 +25,8 @@
 				{{ t('core', 'Your account is not setup for passwordless login.') }}
 			</div>
 
-			<LoginButton v-if="validCredentials"
+			<LoginButton
+				v-if="validCredentials"
 				:loading="loading"
 				:inverted-colors="invertedColors"
 				@click="authenticate" />

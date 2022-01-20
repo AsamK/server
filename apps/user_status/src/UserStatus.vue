@@ -39,7 +39,8 @@
 			</a>
 
 			<!-- Status modal toggle -->
-			<toggle :is="inline ? 'button' : 'a'"
+			<toggle
+				:is="inline ? 'button' : 'a'"
 				:class="{'user-status-menu-item__toggle--inline': inline}"
 				class="user-status-menu-item__toggle"
 				href="#"

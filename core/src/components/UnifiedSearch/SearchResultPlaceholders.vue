@@ -5,13 +5,15 @@
 			<defs>
 				<linearGradient id="unified-search__result-placeholder-gradient">
 					<stop offset="0%" :stop-color="light">
-						<animate attributeName="stop-color"
+						<animate
+							attributeName="stop-color"
 							:values="`${light}; ${light}; ${dark}; ${dark}; ${light}`"
 							dur="2s"
 							repeatCount="indefinite" />
 					</stop>
 					<stop offset="100%" :stop-color="dark">
-						<animate attributeName="stop-color"
+						<animate
+							attributeName="stop-color"
 							:values="`${dark}; ${light}; ${light}; ${dark}; ${dark}`"
 							dur="2s"
 							repeatCount="indefinite" />

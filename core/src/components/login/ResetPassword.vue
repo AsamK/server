@@ -23,7 +23,8 @@
 	<form @submit.prevent="submit">
 		<fieldset>
 			<p>
-				<input id="user"
+				<input
+					id="user"
 					v-model="user"
 					type="text"
 					name="user"
@@ -37,37 +38,44 @@
 				<label for="user" class="infield">{{ t('core', 'Username or email') }}</label>
 			</p>
 			<div id="reset-password-wrapper">
-				<input id="reset-password-submit"
+				<input
+					id="reset-password-submit"
 					type="submit"
 					class="login primary"
 					title=""
 					:value="t('core', 'Reset password')">
-				<div class="submit-icon"
+				<div
+					class="submit-icon"
 					:class="{
 						'icon-confirm-white': !loading,
 						'icon-loading-small': loading && invertedColors,
 						'icon-loading-small-dark': loading && !invertedColors,
 					}" />
 			</div>
-			<p v-if="message === 'send-success'"
+			<p
+				v-if="message === 'send-success'"
 				class="update">
 				{{ t('core', 'A password reset message has been sent to the email address of this account. If you do not receive it, check your spam/junk folders or ask your local administrator for help.') }}
 				<br>
 				{{ t('core', 'If it is not there ask your local administrator.') }}
 			</p>
-			<p v-else-if="message === 'send-error'"
+			<p
+				v-else-if="message === 'send-error'"
 				class="update warning">
 				{{ t('core', 'Couldn\'t send reset email. Please contact your administrator.') }}
 			</p>
-			<p v-else-if="message === 'reset-error'"
+			<p
+				v-else-if="message === 'reset-error'"
 				class="update warning">
 				{{ t('core', 'Password cannot be changed. Please contact your administrator.') }}
 			</p>
-			<p v-else-if="message"
+			<p
+				v-else-if="message"
 				class="update"
 				:class="{warning: error}" />
 
-			<a href="#"
+			<a
+				href="#"
 				@click.prevent="$emit('abort')">
 				{{ t('core', 'Back to login') }}
 			</a>

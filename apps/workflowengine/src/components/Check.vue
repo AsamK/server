@@ -1,6 +1,7 @@
 <template>
 	<div v-click-outside="hideDelete" class="check" @click="showDelete">
-		<Multiselect ref="checkSelector"
+		<Multiselect
+			ref="checkSelector"
 			v-model="currentOption"
 			:options="options"
 			label="name"
@@ -8,7 +9,8 @@
 			:allow-empty="false"
 			:placeholder="t('workflowengine', 'Select a filter')"
 			@input="updateCheck" />
-		<Multiselect v-model="currentOperator"
+		<Multiselect
+			v-model="currentOperator"
 			:disabled="!currentOption"
 			:options="operators"
 			class="comparator"
@@ -17,7 +19,8 @@
 			:allow-empty="false"
 			:placeholder="t('workflowengine', 'Select a comparator')"
 			@input="updateCheck" />
-		<component :is="currentOption.component"
+		<component
+			:is="currentOption.component"
 			v-if="currentOperator && currentComponent"
 			v-model="check.value"
 			:disabled="!currentOption"
@@ -26,7 +29,8 @@
 			@input="updateCheck"
 			@valid="(valid=true) && validate()"
 			@invalid="!(valid=false) && validate()" />
-		<input v-else
+		<input
+			v-else
 			v-model="check.value"
 			type="text"
 			:class="{ invalid: !valid }"

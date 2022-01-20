@@ -24,7 +24,8 @@
 	<div v-if="!enforceAcceptShares || allowCustomDirectory" id="files-sharing-personal-settings" class="section">
 		<h2>{{ t('files_sharing', 'Sharing') }}</h2>
 		<p v-if="!enforceAcceptShares">
-			<input id="files-sharing-personal-settings-accept"
+			<input
+				id="files-sharing-personal-settings-accept"
 				v-model="accepting"
 				class="checkbox"
 				type="checkbox"

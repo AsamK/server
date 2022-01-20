@@ -20,13 +20,15 @@
   -
   -->
 <template>
-	<div v-show="!deleted"
+	<div
+		v-show="!deleted"
 		:class="{'comment--loading': loading}"
 		class="comment">
 		<!-- Comment header toolbar -->
 		<div class="comment__header">
 			<!-- Author -->
-			<Avatar class="comment__avatar"
+			<Avatar
+				class="comment__avatar"
 				:display-name="actorDisplayName"
 				:user="actorId"
 				:size="32" />
@@ -51,7 +53,8 @@
 					</ActionButton>
 				</template>
 
-				<ActionButton v-else
+				<ActionButton
+					v-else
 					icon="icon-close"
 					@click="onEditCancel">
 					{{ t('comments', 'Cancel edit') }}
@@ -67,13 +70,15 @@
 
 		<!-- Message editor -->
 		<div v-if="editor || editing" class="comment__editor ">
-			<RichContenteditable ref="editor"
+			<RichContenteditable
+				ref="editor"
 				:auto-complete="autoComplete"
 				:contenteditable="!loading"
 				:value="localMessage"
 				@update:value="updateLocalMessage"
 				@submit="onSubmit" />
-			<input v-tooltip="t('comments', 'Post comment')"
+			<input
+				v-tooltip="t('comments', 'Post comment')"
 				:class="loading ? 'icon-loading-small' :'icon-confirm'"
 				class="comment__submit"
 				type="submit"
@@ -85,7 +90,8 @@
 		<!-- Message content -->
 		<!-- The html is escaped and sanitized before rendering -->
 		<!-- eslint-disable-next-line vue/no-v-html-->
-		<div v-else
+		<div
+			v-else
 			:class="{'comment__message--expanded': expanded}"
 			class="comment__message"
 			@click="onExpand"

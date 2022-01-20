@@ -23,7 +23,8 @@
 <template>
 	<Content app-name="settings" :navigation-class="{ 'icon-loading': loadingAddGroup }">
 		<AppNavigation>
-			<AppNavigationNew button-id="new-user-button"
+			<AppNavigationNew
+				button-id="new-user-button"
 				:text="t('settings','New user')"
 				button-class="icon-add"
 				@click="showNewUserMenu"
@@ -100,7 +101,8 @@
 				<AppNavigationSettings>
 					<div>
 						<p>{{ t('settings', 'Default quota:') }}</p>
-						<Multiselect :value="defaultQuota"
+						<Multiselect
+							:value="defaultQuota"
 							:options="quotaOptions"
 							tag-placeholder="create"
 							:placeholder="t('settings', 'Select default quota')"
@@ -112,35 +114,40 @@
 							@input="setDefaultQuota" />
 					</div>
 					<div>
-						<input id="showLanguages"
+						<input
+							id="showLanguages"
 							v-model="showLanguages"
 							type="checkbox"
 							class="checkbox">
 						<label for="showLanguages">{{ t('settings', 'Show Languages') }}</label>
 					</div>
 					<div>
-						<input id="showLastLogin"
+						<input
+							id="showLastLogin"
 							v-model="showLastLogin"
 							type="checkbox"
 							class="checkbox">
 						<label for="showLastLogin">{{ t('settings', 'Show last login') }}</label>
 					</div>
 					<div>
-						<input id="showUserBackend"
+						<input
+							id="showUserBackend"
 							v-model="showUserBackend"
 							type="checkbox"
 							class="checkbox">
 						<label for="showUserBackend">{{ t('settings', 'Show user backend') }}</label>
 					</div>
 					<div>
-						<input id="showStoragePath"
+						<input
+							id="showStoragePath"
 							v-model="showStoragePath"
 							type="checkbox"
 							class="checkbox">
 						<label for="showStoragePath">{{ t('settings', 'Show storage path') }}</label>
 					</div>
 					<div>
-						<input id="sendWelcomeMail"
+						<input
+							id="sendWelcomeMail"
 							v-model="sendWelcomeMail"
 							:disabled="loadingSendMail"
 							type="checkbox"

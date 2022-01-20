@@ -31,7 +31,8 @@
 		<p v-else>
 			{{ t('settings', 'The following devices are configured for your account:') }}
 		</p>
-		<Device v-for="device in sortedDevices"
+		<Device
+			v-for="device in sortedDevices"
 			:key="device.id"
 			:name="device.name"
 			@delete="deleteDevice(device.id)" />
@@ -40,7 +41,8 @@
 			{{ t('settings', 'Your browser does not support WebAuthn.') }}
 		</p>
 
-		<AddDevice v-if="hasPublicKeyCredential"
+		<AddDevice
+			v-if="hasPublicKeyCredential"
 			:is-https="isHttps"
 			:is-localhost="isLocalhost"
 			@added="deviceAdded" />

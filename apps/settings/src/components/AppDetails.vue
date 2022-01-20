@@ -24,18 +24,21 @@
 	<div class="app-details">
 		<div class="app-details__actions">
 			<div v-if="app.active && canLimitToGroups(app)" class="app-details__actions-groups">
-				<input :id="prefix('groups_enable', app.id)"
+				<input
+					:id="prefix('groups_enable', app.id)"
 					v-model="groupCheckedAppsData"
 					type="checkbox"
 					:value="app.id"
 					class="groups-enable__checkbox checkbox"
 					@change="setGroupLimit">
 				<label :for="prefix('groups_enable', app.id)">{{ t('settings', 'Limit to groups') }}</label>
-				<input type="hidden"
+				<input
+					type="hidden"
 					class="group_select"
 					:title="t('settings', 'All')"
 					value="">
-				<Multiselect v-if="isLimitedToGroups(app)"
+				<Multiselect
+					v-if="isLimitedToGroups(app)"
 					:options="groups"
 					:value="appGroups"
 					:options-limit="5"
@@ -53,32 +56,37 @@
 				</Multiselect>
 			</div>
 			<div class="app-details__actions-manage">
-				<input v-if="app.update"
+				<input
+					v-if="app.update"
 					class="update primary"
 					type="button"
 					:value="t('settings', 'Update to {version}', { version: app.update })"
 					:disabled="installing || isLoading"
 					@click="update(app.id)">
-				<input v-if="app.canUnInstall"
+				<input
+					v-if="app.canUnInstall"
 					class="uninstall"
 					type="button"
 					:value="t('settings', 'Remove')"
 					:disabled="installing || isLoading"
 					@click="remove(app.id)">
-				<input v-if="app.active"
+				<input
+					v-if="app.active"
 					class="enable"
 					type="button"
 					:value="t('settings','Disable')"
 					:disabled="installing || isLoading"
 					@click="disable(app.id)">
-				<input v-if="!app.active && (app.canInstall || app.isCompatible)"
+				<input
+					v-if="!app.active && (app.canInstall || app.isCompatible)"
 					v-tooltip.auto="enableButtonTooltip"
 					class="enable primary"
 					type="button"
 					:value="enableButtonText"
 					:disabled="!app.canInstall || installing || isLoading"
 					@click="enable(app.id)">
-				<input v-else-if="!app.active && !app.canInstall"
+				<input
+					v-else-if="!app.active && !app.canInstall"
 					v-tooltip.auto="forceEnableButtonTooltip"
 					class="enable force"
 					type="button"
@@ -106,34 +114,40 @@
 		</ul>
 
 		<p class="app-details__documentation">
-			<a v-if="!app.internal"
+			<a
+				v-if="!app.internal"
 				class="appslink"
 				:href="appstoreUrl"
 				target="_blank"
 				rel="noreferrer noopener">{{ t('settings', 'View in store') }} ↗</a>
 
-			<a v-if="app.website"
+			<a
+				v-if="app.website"
 				class="appslink"
 				:href="app.website"
 				target="_blank"
 				rel="noreferrer noopener">{{ t('settings', 'Visit website') }} ↗</a>
-			<a v-if="app.bugs"
+			<a
+				v-if="app.bugs"
 				class="appslink"
 				:href="app.bugs"
 				target="_blank"
 				rel="noreferrer noopener">{{ t('settings', 'Report a bug') }} ↗</a>
 
-			<a v-if="app.documentation && app.documentation.user"
+			<a
+				v-if="app.documentation && app.documentation.user"
 				class="appslink"
 				:href="app.documentation.user"
 				target="_blank"
 				rel="noreferrer noopener">{{ t('settings', 'User documentation') }} ↗</a>
-			<a v-if="app.documentation && app.documentation.admin"
+			<a
+				v-if="app.documentation && app.documentation.admin"
 				class="appslink"
 				:href="app.documentation.admin"
 				target="_blank"
 				rel="noreferrer noopener">{{ t('settings', 'Admin documentation') }} ↗</a>
-			<a v-if="app.documentation && app.documentation.developer"
+			<a
+				v-if="app.documentation && app.documentation.developer"
 				class="appslink"
 				:href="app.documentation.developer"
 				target="_blank"

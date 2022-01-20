@@ -20,7 +20,8 @@
   -
   -->
 <template>
-	<HeaderMenu id="unified-search"
+	<HeaderMenu
+		id="unified-search"
 		class="unified-search"
 		exclude-click-outside-classes="popover"
 		:open.sync="open"
@@ -29,20 +30,23 @@
 		@close="onClose">
 		<!-- Header icon -->
 		<template #trigger>
-			<Magnify class="unified-search__trigger"
+			<Magnify
+				class="unified-search__trigger"
 				:size="20"
 				fill-color="var(--color-primary-text)" />
 		</template>
 
 		<!-- Search form & filters wrapper -->
 		<div class="unified-search__input-wrapper">
-			<form class="unified-search__form"
+			<form
+				class="unified-search__form"
 				role="search"
 				:class="{'icon-loading-small': isLoading}"
 				@submit.prevent.stop="onInputEnter"
 				@reset.prevent.stop="onReset">
 				<!-- Search input -->
-				<input ref="input"
+				<input
+					ref="input"
 					v-model="query"
 					class="unified-search__form-input"
 					type="search"
@@ -52,7 +56,8 @@
 					@keypress.enter.prevent.stop="onInputEnter">
 
 				<!-- Reset search button -->
-				<input v-if="!!query && !isLoading"
+				<input
+					v-if="!!query && !isLoading"
 					type="reset"
 					class="unified-search__form-reset icon-close"
 					:aria-label="t('core','Reset search')"
@@ -61,7 +66,8 @@
 
 			<!-- Search filters -->
 			<Actions v-if="availableFilters.length > 1" class="unified-search__filters" placement="bottom">
-				<ActionButton v-for="type in availableFilters"
+				<ActionButton
+					v-for="type in availableFilters"
 					:key="type"
 					icon="icon-filter"
 					:title="t('core', 'Search for {name} only', { name: typesMap[type] })"
@@ -93,14 +99,16 @@
 
 		<!-- Grouped search results -->
 		<template v-else>
-			<ul v-for="({list, type}, typesIndex) in orderedResults"
+			<ul
+				v-for="({list, type}, typesIndex) in orderedResults"
 				:key="type"
 				class="unified-search__results"
 				:class="`unified-search__results-${type}`"
 				:aria-label="typesMap[type]">
 				<!-- Search results -->
 				<li v-for="(result, index) in limitIfAny(list, type)" :key="result.resourceUrl">
-					<SearchResult v-bind="result"
+					<SearchResult
+						v-bind="result"
 						:query="query"
 						:focused="focused === 0 && typesIndex === 0 && index === 0"
 						@focus="setFocusedIndex" />
@@ -108,7 +116,8 @@
 
 				<!-- Load more button -->
 				<li>
-					<SearchResult v-if="!reached[type]"
+					<SearchResult
+						v-if="!reached[type]"
 						class="unified-search__result-more"
 						:title="loading[type]
 							? t('core', 'Loading more results …')

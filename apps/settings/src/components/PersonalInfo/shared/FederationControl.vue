@@ -26,7 +26,8 @@
 		:aria-label="ariaLabel"
 		:default-icon="scopeIcon"
 		:disabled="disabled">
-		<FederationControlAction v-for="federationScope in federationScopes"
+		<FederationControlAction
+			v-for="federationScope in federationScopes"
 			:key="federationScope.name"
 			:active-scope="scope"
 			:display-name="federationScope.displayName"

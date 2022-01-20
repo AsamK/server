@@ -25,7 +25,8 @@
 		<p class="settings-hint hidden-when-empty">
 			{{ t('settings', 'Web, desktop and mobile clients currently logged in to your account.') }}
 		</p>
-		<AuthTokenList :tokens="tokens"
+		<AuthTokenList
+			:tokens="tokens"
 			@toggleScope="toggleTokenScope"
 			@rename="rename"
 			@delete="deleteToken"

@@ -21,7 +21,8 @@
   -->
 
 <template>
-	<Content app-name="settings"
+	<Content
+		app-name="settings"
 		:class="{ 'with-app-sidebar': app}"
 		:content-class="{ 'icon-loading': loadingList }"
 		:navigation-class="{ 'icon-loading': loading }">
@@ -106,11 +107,13 @@
 			<template #description>
 				<!-- Featured/Supported badges -->
 				<div v-if="app.level === 300 || app.level === 200 || hasRating" class="app-level">
-					<span v-if="app.level === 300"
+					<span
+						v-if="app.level === 300"
 						v-tooltip.auto="t('settings', 'This app is supported via your current Nextcloud subscription.')"
 						class="supported icon-checkmark-color">
 						{{ t('settings', 'Supported') }}</span>
-					<span v-if="app.level === 200"
+					<span
+						v-if="app.level === 200"
 						v-tooltip.auto="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
 						class="official icon-checkmark">
 						{{ t('settings', 'Featured') }}</span>
@@ -120,13 +123,15 @@
 
 			<!-- Tab content -->
 
-			<AppSidebarTab id="desc"
+			<AppSidebarTab
+				id="desc"
 				icon="icon-category-office"
 				:name="t('settings', 'Details')"
 				:order="0">
 				<AppDetails :app="app" />
 			</AppSidebarTab>
-			<AppSidebarTab v-if="app.appstoreData && app.releases[0].translations.en.changelog"
+			<AppSidebarTab
+				v-if="app.appstoreData && app.releases[0].translations.en.changelog"
 				id="desca"
 				icon="icon-category-organization"
 				:name="t('settings', 'Changelog')"

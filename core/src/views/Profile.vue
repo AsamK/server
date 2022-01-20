@@ -28,7 +28,8 @@
 				<div class="profile__header__container__placeholder" />
 				<h2 class="profile__header__container__displayname">
 					{{ displayname || userId }}
-					<a v-if="isCurrentUser"
+					<a
+						v-if="isCurrentUser"
 						class="primary profile__header__container__edit-button"
 						:href="settingsUrl">
 						<PencilIcon
@@ -39,7 +40,8 @@
 						{{ t('core', 'Edit Profile') }}
 					</a>
 				</h2>
-				<div v-if="status.icon || status.message"
+				<div
+					v-if="status.icon || status.message"
 					class="profile__header__container__status-text"
 					:class="{ interactive: isCurrentUser }"
 					@click.prevent.stop="openStatusModal">
@@ -64,7 +66,8 @@
 
 				<div class="user-actions">
 					<!-- When a tel: URL is opened with target="_blank", a blank new tab is opened which is inconsistent with the handling of other URLs so we set target="_self" for the phone action -->
-					<PrimaryActionButton v-if="primaryAction"
+					<PrimaryActionButton
+						v-if="primaryAction"
 						class="user-actions__primary"
 						:href="primaryAction.target"
 						:icon="primaryAction.icon"
@@ -73,7 +76,8 @@
 					</PrimaryActionButton>
 					<div class="user-actions__other">
 						<!-- FIXME Remove inline styles after https://github.com/nextcloud/nextcloud-vue/issues/2315 is fixed -->
-						<Actions v-for="action in middleActions"
+						<Actions
+							v-for="action in middleActions"
 							:key="action.id"
 							:default-icon="action.icon"
 							style="
@@ -93,9 +97,9 @@
 							</ActionLink>
 						</Actions>
 						<template v-if="otherActions">
-							<Actions
-								:force-menu="true">
-								<ActionLink v-for="action in otherActions"
+							<Actions :force-menu="true">
+								<ActionLink
+									v-for="action in otherActions"
 									:key="action.id"
 									:class="{ 'icon-invert': colorMainBackground === '#181818' }"
 									:close-after-click="true"

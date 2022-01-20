@@ -23,7 +23,8 @@
 <template>
 	<div class="comments" :class="{ 'icon-loading': isFirstLoading }">
 		<!-- Editor -->
-		<Comment v-bind="editorData"
+		<Comment
+			v-bind="editorData"
 			:auto-complete="autoComplete"
 			:editor="true"
 			:ressource-id="ressourceId"
@@ -36,7 +37,8 @@
 			</EmptyContent>
 
 			<!-- Comments -->
-			<Comment v-for="comment in comments"
+			<Comment
+				v-for="comment in comments"
 				v-else
 				:key="comment.props.id"
 				v-bind="comment.props"

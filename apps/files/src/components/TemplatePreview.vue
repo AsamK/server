@@ -22,7 +22,8 @@
 
 <template>
 	<li class="template-picker__item">
-		<input :id="id"
+		<input
+			:id="id"
 			:checked="checked"
 			type="radio"
 			class="radio"
@@ -30,9 +31,11 @@
 			@change="onCheck">
 
 		<label :for="id" class="template-picker__label">
-			<div class="template-picker__preview"
+			<div
+				class="template-picker__preview"
 				:class="failedPreview ? 'template-picker__preview--failed' : ''">
-				<img class="template-picker__image"
+				<img
+					class="template-picker__image"
 					:src="realPreviewUrl"
 					alt=""
 					draggable="false"

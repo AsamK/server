@@ -20,7 +20,8 @@
   -
   -->
 <template>
-	<a :href="resourceUrl || '#'"
+	<a
+		:href="resourceUrl || '#'"
 		class="unified-search__result"
 		:class="{
 			'unified-search__result--focused': focused,
@@ -29,7 +30,8 @@
 		@focus="reEmitEvent">
 
 		<!-- Icon describing the result -->
-		<div class="unified-search__result-icon"
+		<div
+			class="unified-search__result-icon"
 			:class="{
 				'unified-search__result-icon--rounded': rounded,
 				'unified-search__result-icon--no-preview': !hasValidThumbnail && !loaded,
@@ -41,7 +43,8 @@
 			}"
 			role="img">
 
-			<img v-if="hasValidThumbnail"
+			<img
+				v-if="hasValidThumbnail"
 				v-show="loaded"
 				:src="thumbnailUrl"
 				alt=""

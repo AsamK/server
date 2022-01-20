@@ -8,7 +8,8 @@
 			<span>{{ t('settings', 'Enforce two-factor authentication') }}</span>
 		</p>
 		<p v-else>
-			<input id="two-factor-enforced"
+			<input
+				id="two-factor-enforced"
 				v-model="enforced"
 				type="checkbox"
 				class="checkbox">
@@ -21,7 +22,8 @@
 				{{ t('settings', 'Two-factor authentication is enforced for all members of the following groups.') }}
 			</p>
 			<p>
-				<Multiselect v-model="enforcedGroups"
+				<Multiselect
+					v-model="enforcedGroups"
 					:options="groups"
 					:placeholder="t('settings', 'Enforced groups')"
 					:disabled="loading"
@@ -36,7 +38,8 @@
 				{{ t('settings', 'Two-factor authentication is not enforced for members of the following groups.') }}
 			</p>
 			<p>
-				<Multiselect v-model="excludedGroups"
+				<Multiselect
+					v-model="excludedGroups"
 					:options="groups"
 					:placeholder="t('settings', 'Excluded groups')"
 					:disabled="loading"
@@ -55,7 +58,8 @@
 			</p>
 		</template>
 		<p>
-			<button v-if="dirty"
+			<button
+				v-if="dirty"
 				class="button primary"
 				:disabled="loading"
 				@click="saveChanges">

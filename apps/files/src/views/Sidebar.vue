@@ -36,7 +36,8 @@
 		@closed="handleClosed">
 		<!-- TODO: create a standard to allow multiple elements here? -->
 		<template v-if="fileInfo" #description>
-			<LegacyView v-for="view in views"
+			<LegacyView
+				v-for="view in views"
 				:key="view.cid"
 				:component="view"
 				:file-info="fileInfo" />

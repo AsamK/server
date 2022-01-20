@@ -25,7 +25,8 @@
 		<fieldset>
 			<p>
 				<label for="password" class="infield">{{ t('core', 'New password') }}</label>
-				<input id="password"
+				<input
+					id="password"
 					v-model="password"
 					type="password"
 					name="password"
@@ -40,7 +41,8 @@
 				<p>
 					{{ t('core', 'Your files are encrypted. There will be no way to get your data back after your password is reset. If you are not sure what to do, please contact your administrator before you continue. Do you really want to continue?') }}
 				</p>
-				<input id="encrypted-continue"
+				<input
+					id="encrypted-continue"
 					v-model="proceed"
 					type="checkbox"
 					class="checkbox">
@@ -50,12 +52,14 @@
 			</div>
 
 			<div id="submit-wrapper">
-				<input id="submit"
+				<input
+					id="submit"
 					type="submit"
 					class="login primary"
 					title=""
 					:value="!loading ? t('core', 'Reset password') : t('core', 'Resetting password')">
-				<div class="submit-icon"
+				<div
+					class="submit-icon"
 					:class="{
 						'icon-loading-small': loading && invertedColors,
 						'icon-loading-small-dark': loading && !invertedColors

@@ -48,7 +48,8 @@
 
 		<template v-if="additionalEmails.length">
 			<em class="additional-emails-label">{{ t('settings', 'Additional emails') }}</em>
-			<Email v-for="(additionalEmail, index) in additionalEmails"
+			<Email
+				v-for="(additionalEmail, index) in additionalEmails"
 				:key="index"
 				:index="index"
 				:scope.sync="additionalEmail.scope"

@@ -4,7 +4,8 @@
 		:class="{'disabled': loading.delete || loading.disable}"
 		:data-id="user.id">
 		<div class="avatar" :class="{'icon-loading-small': loading.delete || loading.disable || loading.wipe}">
-			<img v-if="!loading.delete && !loading.disable && !loading.wipe"
+			<img
+				v-if="!loading.delete && !loading.disable && !loading.wipe"
 				alt=""
 				width="32"
 				height="32"

@@ -20,41 +20,49 @@
   -->
 
 <template>
-	<form ref="loginForm"
+	<form
+		ref="loginForm"
 		method="post"
 		name="login"
 		:action="loginActionUrl"
 		@submit="submit">
 		<fieldset>
-			<div v-if="apacheAuthFailed"
+			<div
+				v-if="apacheAuthFailed"
 				class="warning">
 				{{ t('core', 'Server side authentication failed!') }}<br>
 				<small>{{ t('core', 'Please contact your administrator.') }}
 				</small>
 			</div>
-			<div v-for="(message, index) in messages"
+			<div
+				v-for="(message, index) in messages"
 				:key="index"
 				class="warning">
 				{{ message }}<br>
 			</div>
-			<div v-if="internalException"
+			<div
+				v-if="internalException"
 				class="warning">
 				{{ t('core', 'An internal error occurred.') }}<br>
 				<small>{{ t('core', 'Please try again or contact your administrator.') }}
 				</small>
 			</div>
-			<div id="message"
+			<div
+				id="message"
 				class="hidden">
-				<img class="float-spinner"
+				<img
+					class="float-spinner"
 					alt=""
 					:src="loadingIcon">
 				<span id="messageText" />
 				<!-- the following div ensures that the spinner is always inside the #message div -->
 				<div style="clear: both;" />
 			</div>
-			<p class="grouptop"
+			<p
+				class="grouptop"
 				:class="{shake: invalidPassword}">
-				<input id="user"
+				<input
+					id="user"
 					ref="user"
 					v-model="user"
 					type="text"
@@ -69,9 +77,11 @@
 				<label for="user" class="infield">{{ t('core', 'Username or email') }}</label>
 			</p>
 
-			<p class="groupbottom"
+			<p
+				class="groupbottom"
 				:class="{shake: invalidPassword}">
-				<input id="password"
+				<input
+					id="password"
 					ref="password"
 					:type="passwordInputType"
 					class="password-with-toggle"
@@ -82,7 +92,8 @@
 					:placeholder="t('core', 'Password')"
 					:aria-label="t('core', 'Password')"
 					required>
-				<label for="password"
+				<label
+					for="password"
 					class="infield">{{ t('Password') }}</label>
 				<a href="#" class="toggle-password" @click.stop.prevent="togglePassword">
 					<img :src="toggleIcon" :alt="t('core', 'Toggle password visibility')">
@@ -91,34 +102,42 @@
 
 			<LoginButton :loading="loading" :inverted-colors="invertedColors" />
 
-			<p v-if="invalidPassword"
+			<p
+				v-if="invalidPassword"
 				class="warning wrongPasswordMsg">
 				{{ t('core', 'Wrong username or password.') }}
 			</p>
-			<p v-else-if="userDisabled"
+			<p
+				v-else-if="userDisabled"
 				class="warning userDisabledMsg">
 				{{ t('core', 'User disabled') }}
 			</p>
 
-			<p v-if="throttleDelay && throttleDelay > 5000"
+			<p
+				v-if="throttleDelay && throttleDelay > 5000"
 				class="warning throttledMsg">
 				{{ t('core', 'We have detected multiple invalid login attempts from your IP. Therefore your next login is throttled up to 30 seconds.') }}
 			</p>
 
-			<input v-if="redirectUrl"
+			<input
+				v-if="redirectUrl"
 				type="hidden"
 				name="redirect_url"
 				:value="redirectUrl">
-			<input type="hidden"
+			<input
+				type="hidden"
 				name="timezone"
 				:value="timezone">
-			<input type="hidden"
+			<input
+				type="hidden"
 				name="timezone_offset"
 				:value="timezoneOffset">
-			<input type="hidden"
+			<input
+				type="hidden"
 				name="requesttoken"
 				:value="OC.requestToken">
-			<input v-if="directLogin"
+			<input
+				v-if="directLogin"
 				type="hidden"
 				name="direct"
 				value="1">

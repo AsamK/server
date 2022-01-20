@@ -21,12 +21,14 @@
 
 <template>
 	<div v-if="!adding">
-		<input v-model="deviceName"
+		<input
+			v-model="deviceName"
 			type="text"
 			:disabled="loading"
 			:placeholder="t('settings', 'App name')"
 			@keydown.enter="submit">
-		<button class="button"
+		<button
+			class="button"
 			:disabled="loading"
 			@click="submit">
 			{{ t('settings', 'Create new app password') }}
@@ -37,7 +39,8 @@
 		{{ t('settings', 'For security reasons this password will only be shown once.') }}
 		<div class="app-password-row">
 			<span class="app-password-label">{{ t('settings', 'Username') }}</span>
-			<input :value="loginName"
+			<input
+				:value="loginName"
 				type="text"
 				class="monospaced"
 				readonly="readonly"
@@ -45,13 +48,15 @@
 		</div>
 		<div class="app-password-row">
 			<span class="app-password-label">{{ t('settings', 'Password') }}</span>
-			<input ref="appPassword"
+			<input
+				ref="appPassword"
 				:value="appPassword"
 				type="text"
 				class="monospaced"
 				readonly="readonly"
 				@focus="selectInput">
-			<a ref="clipboardButton"
+			<a
+				ref="clipboardButton"
 				v-tooltip="copyTooltipOptions"
 				v-clipboard:copy="appPassword"
 				v-clipboard:success="onCopyPassword"
@@ -59,18 +64,21 @@
 				class="icon icon-clippy"
 				@mouseover="hoveringCopyButton = true"
 				@mouseleave="hoveringCopyButton = false" />
-			<button class="button"
+			<button
+				class="button"
 				@click="reset">
 				{{ t('settings', 'Done') }}
 			</button>
 		</div>
 		<div class="app-password-row">
 			<span class="app-password-label" />
-			<a v-if="!showQR"
+			<a
+				v-if="!showQR"
 				@click="showQR = true">
 				{{ t('settings', 'Show QR code for mobile apps') }}
 			</a>
-			<QR v-else
+			<QR
+				v-else
 				:value="qrUrl" />
 		</div>
 	</div>

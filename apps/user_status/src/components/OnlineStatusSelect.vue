@@ -21,7 +21,8 @@
  -->
 <template>
 	<div class="user-status-online-select">
-		<input :id="id"
+		<input
+			:id="id"
 			:checked="checked"
 			class="user-status-online-select__input"
 			type="radio"

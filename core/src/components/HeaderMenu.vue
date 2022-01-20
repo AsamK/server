@@ -25,7 +25,8 @@
 		v-click-outside="clickOutsideConfig"
 		:class="{ 'header-menu--opened': opened }"
 		class="header-menu">
-		<a class="header-menu__trigger"
+		<a
+			class="header-menu__trigger"
 			href="#"
 			:aria-label="ariaLabel"
 			:aria-controls="`header-menu-${id}`"
@@ -34,7 +35,8 @@
 			@click.prevent="toggleMenu">
 			<slot name="trigger" />
 		</a>
-		<div v-show="opened"
+		<div
+			v-show="opened"
 			:id="`header-menu-${id}`"
 			class="header-menu__wrapper"
 			role="menu">

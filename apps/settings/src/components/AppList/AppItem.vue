@@ -25,12 +25,14 @@
 		<div class="app-image app-image-icon" @click="showAppDetails">
 			<div v-if="(listView && !app.preview) || (!listView && !screenshotLoaded)" class="icon-settings-dark" />
 
-			<svg v-else-if="listView && app.preview"
+			<svg
+				v-else-if="listView && app.preview"
 				width="32"
 				height="32"
 				viewBox="0 0 32 32">
 				<defs><filter :id="filterId"><feColorMatrix in="SourceGraphic" type="matrix" values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0" /></filter></defs>
-				<image x="0"
+				<image
+					x="0"
 					y="0"
 					width="32"
 					height="32"
@@ -54,11 +56,13 @@
 		</div>
 
 		<div class="app-level">
-			<span v-if="app.level === 300"
+			<span
+				v-if="app.level === 300"
 				v-tooltip.auto="t('settings', 'This app is supported via your current Nextcloud subscription.')"
 				class="supported icon-checkmark-color">
 				{{ t('settings', 'Supported') }}</span>
-			<span v-if="app.level === 200"
+			<span
+				v-if="app.level === 200"
 				v-tooltip.auto="t('settings', 'Featured apps are developed by and within the community. They offer central functionality and are ready for production use.')"
 				class="official icon-checkmark">
 				{{ t('settings', 'Featured') }}</span>
@@ -70,32 +74,37 @@
 				{{ app.error }}
 			</div>
 			<div v-if="isLoading" class="icon icon-loading-small" />
-			<input v-if="app.update"
+			<input
+				v-if="app.update"
 				class="update primary"
 				type="button"
 				:value="t('settings', 'Update to {update}', {update:app.update})"
 				:disabled="installing || isLoading"
 				@click.stop="update(app.id)">
-			<input v-if="app.canUnInstall"
+			<input
+				v-if="app.canUnInstall"
 				class="uninstall"
 				type="button"
 				:value="t('settings', 'Remove')"
 				:disabled="installing || isLoading"
 				@click.stop="remove(app.id)">
-			<input v-if="app.active"
+			<input
+				v-if="app.active"
 				class="enable"
 				type="button"
 				:value="t('settings','Disable')"
 				:disabled="installing || isLoading"
 				@click.stop="disable(app.id)">
-			<input v-if="!app.active && (app.canInstall || app.isCompatible)"
+			<input
+				v-if="!app.active && (app.canInstall || app.isCompatible)"
 				v-tooltip.auto="enableButtonTooltip"
 				class="enable"
 				type="button"
 				:value="enableButtonText"
 				:disabled="!app.canInstall || installing || isLoading"
 				@click.stop="enable(app.id)">
-			<input v-else-if="!app.active"
+			<input
+				v-else-if="!app.active"
 				v-tooltip.auto="forceEnableButtonTooltip"
 				class="enable force"
 				type="button"

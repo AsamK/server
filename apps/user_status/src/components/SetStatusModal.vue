@@ -30,7 +30,8 @@
 				<h3>{{ $t('user_status', 'Online status') }}</h3>
 			</div>
 			<div class="set-status-modal__online-status">
-				<OnlineStatusSelect v-for="status in statuses"
+				<OnlineStatusSelect
+					v-for="status in statuses"
 					:key="status.type"
 					v-bind="status"
 					:checked="status.type === statusType"
@@ -43,8 +44,7 @@
 			</div>
 			<div class="set-status-modal__custom-input">
 				<EmojiPicker @select="setIcon">
-					<button
-						class="custom-input__emoji-button">
+					<button class="custom-input__emoji-button">
 						{{ visibleIcon }}
 					</button>
 				</EmojiPicker>
@@ -54,8 +54,7 @@
 					@change="setMessage"
 					@submit="saveStatus" />
 			</div>
-			<PredefinedStatusesList
-				@selectStatus="selectPredefinedMessage" />
+			<PredefinedStatusesList @selectStatus="selectPredefinedMessage" />
 			<ClearAtSelect
 				:clear-at="clearAt"
 				@selectClearAt="setClearAt" />

@@ -21,7 +21,8 @@
   -->
 
 <template>
-	<Component :is="data.is"
+	<Component
+		:is="data.is"
 		v-bind="data"
 		v-on="action.handlers">
 		{{ data.text }}

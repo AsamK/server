@@ -42,7 +42,8 @@
 				<span class="option__title">{{ props.option.label }}</span>
 			</template>
 		</Multiselect>
-		<input v-if="!isPredefined"
+		<input
+			v-if="!isPredefined"
 			type="text"
 			:value="currentValue.pattern"
 			:placeholder="t('workflowengine', 'e.g. httpd/unix-directory')"

@@ -42,7 +42,8 @@
 				<span class="option__title">{{ props.option.label }} {{ props.option.$groupLabel }}</span>
 			</template>
 		</Multiselect>
-		<input v-if="!isPredefined"
+		<input
+			v-if="!isPredefined"
 			type="text"
 			:value="currentValue.pattern"
 			:placeholder="placeholder"

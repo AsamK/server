@@ -21,7 +21,8 @@
   -->
 
 <template>
-	<Multiselect v-model="inputValObjects"
+	<Multiselect
+		v-model="inputValObjects"
 		:options="tags"
 		:options-limit="5"
 		:placeholder="label"

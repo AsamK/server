@@ -21,7 +21,8 @@
   -->
 
 <template>
-	<Multiselect ref="multiselect"
+	<Multiselect
+		ref="multiselect"
 		class="sharing-input"
 		:clear-on-select="true"
 		:disabled="!canReshare"

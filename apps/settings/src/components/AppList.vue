@@ -26,7 +26,8 @@
 			<template v-if="useListView">
 				<div v-if="showUpdateAll" class="counter">
 					{{ n('settings', '%n app has an update available', '%n apps have an update available', counter) }}
-					<button v-if="showUpdateAll"
+					<button
+						v-if="showUpdateAll"
 						id="app-list-update-all"
 						class="primary"
 						@click="updateAll">
@@ -34,13 +35,15 @@
 					</button>
 				</div>
 				<transition-group name="app-list" tag="div" class="apps-list-container">
-					<AppItem v-for="app in apps"
+					<AppItem
+						v-for="app in apps"
 						:key="app.id"
 						:app="app"
 						:category="category" />
 				</transition-group>
 			</template>
-			<transition-group v-if="useBundleView"
+			<transition-group
+				v-if="useBundleView"
 				name="app-list"
 				tag="div"
 				class="apps-list-container">
@@ -55,14 +58,16 @@
 							&nbsp;
 						</div>
 					</div>
-					<AppItem v-for="app in bundleApps(bundle.id)"
+					<AppItem
+						v-for="app in bundleApps(bundle.id)"
 						:key="bundle.id + app.id"
 						:app="app"
 						:category="category" />
 				</template>
 			</transition-group>
 			<template v-if="useAppStoreView">
-				<AppItem v-for="app in apps"
+				<AppItem
+					v-for="app in apps"
 					:key="app.id"
 					:app="app"
 					:category="category"
@@ -79,7 +84,8 @@
 							<h2>{{ t('settings', 'Results from other categories') }}</h2>
 						</td>
 					</div>
-					<AppItem v-for="app in searchApps"
+					<AppItem
+						v-for="app in searchApps"
 						:key="app.id"
 						:app="app"
 						:category="category"

@@ -1,18 +1,21 @@
 <template>
 	<div class="timeslot">
-		<input v-model="newValue.startTime"
+		<input
+			v-model="newValue.startTime"
 			type="text"
 			class="timeslot--start"
 			placeholder="e.g. 08:00"
 			@input="update">
-		<input v-model="newValue.endTime"
+		<input
+			v-model="newValue.endTime"
 			type="text"
 			placeholder="e.g. 18:00"
 			@input="update">
 		<p v-if="!valid" class="invalid-hint">
 			{{ t('workflowengine', 'Please enter a valid time span') }}
 		</p>
-		<Multiselect v-show="valid"
+		<Multiselect
+			v-show="valid"
 			v-model="newValue.timezone"
 			:options="timezones"
 			@input="update" />

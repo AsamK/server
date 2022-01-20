@@ -26,18 +26,21 @@
 				class="weather-status-menu-item__subheader"
 				:default-icon="weatherIcon"
 				:menu-title="currentWeatherMessage">
-				<ActionText v-if="gotWeather"
+				<ActionText
+					v-if="gotWeather"
 					:icon="futureWeatherIcon">
 					{{ forecastMessage }}
 				</ActionText>
-				<ActionLink v-if="gotWeather"
+				<ActionLink
+					v-if="gotWeather"
 					icon="icon-address"
 					target="_blank"
 					:href="weatherLinkTarget"
 					:close-after-click="true">
 					{{ locationText }}
 				</ActionLink>
-				<ActionButton v-if="gotWeather"
+				<ActionButton
+					v-if="gotWeather"
 					:icon="addRemoveFavoriteIcon"
 					@click="onAddRemoveFavoriteClick">
 					{{ addRemoveFavoriteText }}
@@ -64,7 +67,8 @@
 					@click="showFavorites = !showFavorites">
 					{{ t('weather_status', 'Favorites') }}
 				</ActionButton>
-				<ActionButton v-for="f in displayedFavorites"
+				<ActionButton
+					v-for="f in displayedFavorites"
 					:key="f"
 					icon="icon-starred"
 					@click="onFavoriteClick($event, f)">

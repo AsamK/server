@@ -23,13 +23,15 @@
 
 		<!-- Folder picking form -->
 		<form class="share-folder__form" @reset.prevent.stop="resetFolder">
-			<input class="share-folder__picker"
+			<input
+				class="share-folder__picker"
 				type="text"
 				:placeholder="readableDirectory"
 				@click.prevent="pickFolder">
 
 			<!-- Show reset button if folder is different -->
-			<input v-if="readableDirectory !== defaultDirectory"
+			<input
+				v-if="readableDirectory !== defaultDirectory"
 				class="share-folder__reset"
 				type="reset"
 				:value="t('files_sharing', 'Reset')"

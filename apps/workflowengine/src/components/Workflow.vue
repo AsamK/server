@@ -8,12 +8,14 @@
 			</p>
 
 			<transition-group name="slide" tag="div" class="actions">
-				<Operation v-for="operation in getMainOperations"
+				<Operation
+					v-for="operation in getMainOperations"
 					:key="operation.id"
 					:operation="operation"
 					@click.native="createNewRule(operation)" />
 
-				<a v-if="showAppStoreHint"
+				<a
+					v-if="showAppStoreHint"
 					:key="'add'"
 					:href="appstoreUrl"
 					class="actions__item colored more">
@@ -26,7 +28,8 @@
 			</transition-group>
 
 			<div v-if="hasMoreOperations" class="actions__more">
-				<button class="icon"
+				<button
+					class="icon"
 					:class="showMoreOperations ? 'icon-triangle-n' : 'icon-triangle-s'"
 					@click="showMoreOperations=!showMoreOperations">
 					{{ showMoreOperations ? t('workflowengine', 'Show less') : t('workflowengine', 'Show more') }}

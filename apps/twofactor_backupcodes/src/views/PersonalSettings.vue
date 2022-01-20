@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<button v-if="!enabled"
+		<button
+			v-if="!enabled"
 			id="generate-backup-codes"
 			:disabled="generatingCodes"
 			@click="generateBackupCodes">
@@ -19,17 +20,20 @@
 							{{ code }}
 						</li>
 					</ul>
-					<a :href="downloadUrl"
+					<a
+						:href="downloadUrl"
 						class="button primary"
 						:download="downloadFilename">{{ t('twofactor_backupcodes', 'Save backup codes') }}</a>
-					<button class="button"
+					<button
+						class="button"
 						@click="printCodes">
 						{{ t('twofactor_backupcodes', 'Print backup codes') }}
 					</button>
 				</template>
 			</p>
 			<p>
-				<button id="generate-backup-codes"
+				<button
+					id="generate-backup-codes"
 					@click="generateBackupCodes">
 					{{ t('twofactor_backupcodes', 'Regenerate backup codes') }}
 				</button>

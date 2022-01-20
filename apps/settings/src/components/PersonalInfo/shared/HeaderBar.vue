@@ -21,8 +21,7 @@
 -->
 
 <template>
-	<h3
-		:class="{ 'setting-property': isSettingProperty, 'profile-property': isProfileProperty }">
+	<h3 :class="{ 'setting-property': isSettingProperty, 'profile-property': isProfileProperty }">
 		<label :for="labelFor">
 			<!-- Already translated as required by prop validator -->
 			{{ accountProperty }}

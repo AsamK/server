@@ -22,25 +22,29 @@
 
 <template>
 	<div class="background-selector">
-		<button class="background filepicker"
+		<button
+			class="background filepicker"
 			:class="{ active: background === 'custom' }"
 			tabindex="0"
 			@click="pickFile">
 			{{ t('dashboard', 'Pick from Files') }}
 		</button>
-		<button class="background default"
+		<button
+			class="background default"
 			tabindex="0"
 			:class="{ 'icon-loading': loading === 'default', active: background === 'default' }"
 			@click="setDefault">
 			{{ t('dashboard', 'Default images') }}
 		</button>
-		<button class="background color"
+		<button
+			class="background color"
 			:class="{ active: background === 'custom' }"
 			tabindex="0"
 			@click="pickColor">
 			{{ t('dashboard', 'Plain background') }}
 		</button>
-		<button v-for="shippedBackground in shippedBackgrounds"
+		<button
+			v-for="shippedBackground in shippedBackgrounds"
 			:key="shippedBackground.name"
 			v-tooltip="shippedBackground.details.attribution"
 			:class="{ 'icon-loading': loading === shippedBackground.name, active: background === shippedBackground.name }"

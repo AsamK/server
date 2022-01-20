@@ -21,12 +21,14 @@
   -->
 
 <template>
-	<Modal v-if="opened"
+	<Modal
+		v-if="opened"
 		:clear-view-delay="-1"
 		class="templates-picker"
 		size="large"
 		@close="close">
-		<form class="templates-picker__form"
+		<form
+			class="templates-picker__form"
 			:style="style"
 			@submit.prevent.stop="onSubmit">
 			<h2>{{ t('files', 'Pick a template for {name}', { name: nameWithoutExt }) }}</h2>
@@ -52,7 +54,8 @@
 				<button @click="close">
 					{{ t('files', 'Cancel') }}
 				</button>
-				<input type="submit"
+				<input
+					type="submit"
 					class="primary"
 					:value="t('files', 'Create')"
 					:aria-label="t('files', 'Create a new file with the selected template')">

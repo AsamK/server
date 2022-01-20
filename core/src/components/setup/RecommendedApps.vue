@@ -53,7 +53,8 @@
 			</div>
 		</div>
 
-		<InstallButton v-if="showInstallButton"
+		<InstallButton
+			v-if="showInstallButton"
 			@click.stop.prevent="installApps" />
 
 		<p class="text-center">

@@ -64,7 +64,8 @@
 						@click.stop.prevent="deleteEmail">
 						{{ deleteEmailLabel }}
 					</ActionButton>
-					<ActionButton v-if="!primary || !isNotificationEmail"
+					<ActionButton
+						v-if="!primary || !isNotificationEmail"
 						:aria-label="setNotificationMailLabel"
 						:close-after-click="true"
 						:disabled="setNotificationMailDisabled"

@@ -4,7 +4,8 @@
 			<img class="option__icon" :src="entity.icon">
 			<span class="option__title option__title_single">{{ operation.triggerHint }}</span>
 		</div>
-		<Multiselect v-else
+		<Multiselect
+			v-else
 			:value="currentEvent"
 			:options="allEvents"
 			track-by="id"

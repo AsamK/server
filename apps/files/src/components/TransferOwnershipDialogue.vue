@@ -56,7 +56,8 @@
 					@search-change="findUserDebounced" />
 			</p>
 			<p>
-				<input type="submit"
+				<input
+					type="submit"
 					class="primary"
 					:value="submitButtonText"
 					:disabled="!canSubmit">

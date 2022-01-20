@@ -35,7 +35,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<OAuthItem v-for="client in clients"
+				<OAuthItem
+					v-for="client in clients"
 					:key="client.id"
 					:client="client"
 					@delete="deleteClient" />
@@ -46,12 +47,14 @@
 		<h3>{{ t('oauth2', 'Add client') }}</h3>
 		<span v-if="newClient.error" class="msg error">{{ newClient.errorMsg }}</span>
 		<form @submit.prevent="addClient">
-			<input id="name"
+			<input
+				id="name"
 				v-model="newClient.name"
 				type="text"
 				name="name"
 				:placeholder="t('oauth2', 'Name')">
-			<input id="redirectUri"
+			<input
+				id="redirectUri"
 				v-model="newClient.redirectUri"
 				type="url"
 				name="redirectUri"

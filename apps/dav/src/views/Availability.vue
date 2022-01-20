@@ -34,26 +34,30 @@
 									type="time"
 									class="end-date"
 									format="H:mm" />
-								<button :key="`slot-${day.id}-${idx}-btn`"
+								<button
+									:key="`slot-${day.id}-${idx}-btn`"
 									class="icon-delete delete-slot button"
 									:title="$t('dav', 'Delete slot')"
 									@click="deleteSlot(day, idx)" />
 							</div>
 						</template>
 					</div>
-					<span v-if="day.slots.length === 0"
+					<span
+						v-if="day.slots.length === 0"
 						class="empty-content">
 						{{ $t('dav', 'No working hours set') }}
 					</span>
 				</div>
-				<button :key="`add-slot-${day.id}`"
+				<button
+					:key="`add-slot-${day.id}`"
 					:disabled="loading"
 					class="icon-add add-another button"
 					:title="$t('dav', 'Add slot')"
 					@click="addSlot(day)" />
 			</template>
 		</div>
-		<button :disabled="loading || saving"
+		<button
+			:disabled="loading || saving"
 			class="button primary"
 			@click="save">
 			{{ $t('dav', 'Save') }}

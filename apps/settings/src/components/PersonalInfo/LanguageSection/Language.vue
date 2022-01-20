@@ -26,7 +26,8 @@
 			id="language"
 			:placeholder="t('settings', 'Language')"
 			@change="onLanguageChange">
-			<option v-for="commonLanguage in commonLanguages"
+			<option
+				v-for="commonLanguage in commonLanguages"
 				:key="commonLanguage.code"
 				:selected="language.code === commonLanguage.code"
 				:value="commonLanguage.code">
@@ -35,7 +36,8 @@
 			<option disabled>
 				──────────
 			</option>
-			<option v-for="otherLanguage in otherLanguages"
+			<option
+				v-for="otherLanguage in otherLanguages"
 				:key="otherLanguage.code"
 				:selected="language.code === otherLanguage.code"
 				:value="otherLanguage.code">

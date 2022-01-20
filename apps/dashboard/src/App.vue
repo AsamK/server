@@ -2,14 +2,16 @@
 	<div id="app-dashboard" :style="backgroundStyle">
 		<h2>{{ greeting.text }}</h2>
 		<ul class="statuses">
-			<div v-for="status in sortedRegisteredStatus"
+			<div
+				v-for="status in sortedRegisteredStatus"
 				:id="'status-' + status"
 				:key="status">
 				<div :ref="'status-' + status" />
 			</div>
 		</ul>
 
-		<Draggable v-model="layout"
+		<Draggable
+			v-model="layout"
 			class="panels"
 			v-bind="{swapThreshold: 0.30, delay: 500, delayOnTouchOnly: true, touchStartThreshold: 3}"
 			handle=".panel--header"
@@ -27,7 +29,8 @@
 		</Draggable>
 
 		<div class="footer">
-			<a class="edit-panels icon-rename"
+			<a
+				class="edit-panels icon-rename"
 				tabindex="0"
 				@click="showModal"
 				@keyup.enter="showModal"
@@ -39,7 +42,8 @@
 				<h3>{{ t('dashboard', 'Edit widgets') }}</h3>
 				<ol class="panels">
 					<li v-for="status in sortedAllStatuses" :key="status">
-						<input :id="'status-checkbox-' + status"
+						<input
+							:id="'status-checkbox-' + status"
 							type="checkbox"
 							class="checkbox"
 							:checked="isStatusActive(status)"
@@ -49,14 +53,16 @@
 						</label>
 					</li>
 				</ol>
-				<Draggable v-model="layout"
+				<Draggable
+					v-model="layout"
 					class="panels"
 					tag="ol"
 					v-bind="{swapThreshold: 0.30, delay: 500, delayOnTouchOnly: true, touchStartThreshold: 3}"
 					handle=".draggable"
 					@end="saveLayout">
 					<li v-for="panel in sortedPanels" :key="panel.id">
-						<input :id="'panel-checkbox-' + panel.id"
+						<input
+							:id="'panel-checkbox-' + panel.id"
 							type="checkbox"
 							class="checkbox"
 							:checked="isActive(panel)"
@@ -70,7 +76,8 @@
 				<a v-if="isAdmin" :href="appStoreUrl" class="button">{{ t('dashboard', 'Get more widgets from the App Store') }}</a>
 
 				<h3>{{ t('dashboard', 'Change background image') }}</h3>
-				<BackgroundSettings :background="background"
+				<BackgroundSettings
+					:background="background"
 					:theming-default-background="themingDefaultBackground"
 					@update:background="updateBackground" />
 
